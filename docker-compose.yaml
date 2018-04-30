@@ -1,0 +1,37 @@
+version: '3.2'
+services:
+  client:
+    build:
+      context: ./client
+    restart: always
+    networks:
+      - ac-net
+    links:
+      - api
+    ports:
+      - 80:80
+  api:
+    build:
+      context: ./api
+    restart: always
+    expose:
+      - 8000
+    networks:
+      - ac-net
+    links:
+      - es
+  es:
+    image: docker.elastic.co/elasticsearch/elasticsearch:6.2.4
+    expose:
+      - 9200
+      - 9300
+    environment:
+      discovery.type: single-node
+    volumes:
+      - ~/data/elasticsearch:/usr/share/elasticsearch/data
+    restart: always
+    networks:
+      - ac-net
+networks:
+  ac-net:
+    driver: bridge
