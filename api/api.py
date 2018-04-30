@@ -36,7 +36,6 @@ class SearchResource(object):
             doc_type='product',
             _source=True,
             body=search)
-        print(res['hits']['hits'][0]['_source']['name'])
         suggestions = []
         for suggestion in res['hits']['hits']:
             item = {'name': suggestion['_source']['name']}
