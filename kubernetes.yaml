@@ -112,11 +112,9 @@ metadata:
     app: client
     tier: client
 spec:
-  # if your cluster supports it, uncomment the following to automatically create
-  # an external load-balanced IP for the frontend service.
-  type: LoadBalancer
+  type: NodePort
   ports:
-  - port: 80
+  - targetport: 80
   selector:
     app: client
     tier: client
