@@ -30,7 +30,7 @@ spec:
         tier: backend
     spec:
       securityContext:
-        fsGroup: 000
+        fsGroup: 1000
       containers:
       - name: master
         image: docker.elastic.co/elasticsearch/elasticsearch:6.2.4
