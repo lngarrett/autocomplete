@@ -86,7 +86,7 @@ spec:
     spec:
       containers:
       - name: api
-        image: us.gcr.io/coral-mariner-201700/api:0.2
+        image: us.gcr.io/coral-mariner-201700/api:0.3
         resources:
           requests:
             cpu: 100m
