@@ -61,9 +61,7 @@ metadata:
     app: api
     tier: api
 spec:
-  # if your cluster supports it, uncomment the following to automatically create
-  # an external load-balanced IP for the frontend service.
-  # type: LoadBalancer
+  type: NodePort
   ports:
   - port: 8000
   selector:
@@ -171,4 +169,12 @@ metadata:
 spec:
   backend:
     serviceName: client
+    servicePort: 80
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: api-ingress
+spec:
+  backend:
+    serviceName: api
     servicePort: 80
