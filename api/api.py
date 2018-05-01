@@ -6,7 +6,7 @@ import json
 
 from elasticsearch import Elasticsearch
 es = Elasticsearch(
-    ['es'],
+    ['elasticsearch'],
     scheme="http",
     port=9200,
 )
