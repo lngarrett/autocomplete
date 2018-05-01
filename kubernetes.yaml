@@ -114,7 +114,7 @@ metadata:
 spec:
   type: NodePort
   ports:
-  - targetport: 80
+  - port: 80
   selector:
     app: client
     tier: client
