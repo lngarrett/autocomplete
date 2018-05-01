@@ -43,6 +43,13 @@ spec:
           value: single-node
         ports:
         - containerPort: 9200
+        volumeMounts:
+          - name: elasticsearch-persistent-storage
+            mountPath: /usr/share/elasticsearch/data
+      volumes:
+        - name: elasticsearch-persistent-storage
+          persistentVolumeClaim:
+            claimName: elasticsearch-volumeclaim
 ---
 apiVersion: v1
 kind: Service
@@ -145,3 +152,14 @@ spec:
           # value: env
         ports:
         - containerPort: 80
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: elasticsearch-volumeclaim
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 30Gi
