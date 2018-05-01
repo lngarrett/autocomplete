@@ -38,6 +38,9 @@ spec:
             memory: 6Gi
           limits:
             memory: 6Gi
+        env:
+        - name: discovery.type
+          value: single-node
         ports:
         - containerPort: 9200
 ---
