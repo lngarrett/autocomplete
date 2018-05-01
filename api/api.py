@@ -53,8 +53,8 @@ app = falcon.API()
 
 # Resources are represented by long-lived class instances
 search = SearchResource()
-search = RootResource()
+root = RootResource()
 
 # things will handle all requests to the '/things' URL path
 app.add_route('/search', search)
-app.add_route('/', search)
+app.add_route('/', root)
