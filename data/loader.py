@@ -3,7 +3,7 @@ products = json.load(open('products.json'))
 
 from elasticsearch import Elasticsearch
 es = Elasticsearch(
-    ['localhost'],
+    ['elasticsearch'],
     scheme="http",
     port=9200,
 )
