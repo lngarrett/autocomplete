@@ -9,9 +9,12 @@ es = Elasticsearch(
 )
 
 for product in products:
-    print(product['name'])
-    res = es.index(
-        index='products',
-        doc_type='product',
-        body=product
-    )
+    try:
+        res = es.index(
+            index='products',
+            doc_type='product',
+            body=product
+        )
+        print(product['name'])
+    except:
+        pass
