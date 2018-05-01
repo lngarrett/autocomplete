@@ -163,3 +163,12 @@ spec:
   resources:
     requests:
       storage: 30Gi
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: client-ingress
+spec:
+  backend:
+    serviceName: client
+    servicePort: 80
