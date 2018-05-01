@@ -14,6 +14,11 @@ es = Elasticsearch(
 # Falcon follows the REST architectural style, meaning (among
 # other things) that you think in terms of resources and state
 # transitions, which map to HTTP verbs.
+class RootResource(object):
+    def on_get(self, req, resp):
+        resp.status = falcon.HTTP_200  # This is the default status
+        resp.body = ('live')
+
 class SearchResource(object):
     def on_get(self, req, resp):
         query = req.get_param('query')
@@ -48,6 +53,8 @@ app = falcon.API()
 
 # Resources are represented by long-lived class instances
 search = SearchResource()
+search = RootResource()
 
 # things will handle all requests to the '/things' URL path
 app.add_route('/search', search)
+app.add_route('/', search)
