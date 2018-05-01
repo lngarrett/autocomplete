@@ -29,6 +29,8 @@ spec:
         app: elasticsearch
         tier: backend
     spec:
+      securityContext:
+        fsGroup: 000
       containers:
       - name: master
         image: docker.elastic.co/elasticsearch/elasticsearch:6.2.4
