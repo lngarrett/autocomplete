@@ -24,7 +24,8 @@ class SearchResource(object):
         query = req.get_param('query')
         """Handles GET requests"""
         resp.status = falcon.HTTP_200  # This is the default status
-        
+        resp.cache_control = [ 'public', 'max-age=3600' ]
+
         search = {
             "query": {
                 "match": {
